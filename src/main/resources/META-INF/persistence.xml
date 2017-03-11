@@ -1,0 +1,28 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <persistence-unit name="cb_unit" transaction-type="RESOURCE_LOCAL">
+        <description>
+            Persistence unit for the JPA Hibernate for Contact Book
+        </description>
+
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!--mapping classes-->
+
+        <class>vi.talya.model.Contact</class>
+        <class>vi.talya.model.Address</class>
+
+        <properties>
+            <!--<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.connection.pool_size" value="1"/>
+        </properties>
+
+    </persistence-unit>
+
+</persistence>
