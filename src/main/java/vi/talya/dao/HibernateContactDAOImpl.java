@@ -35,7 +35,10 @@ public class HibernateContactDAOImpl implements ContactDAO {
     public Contact deleteContact(int id) {
 
         Contact forDelete = entityManager.find(Contact.class, id);
-        entityManager.remove(forDelete);
+
+        if(forDelete != null) {
+            entityManager.remove(forDelete);
+        }
 
         return forDelete;
 

@@ -1,5 +1,6 @@
 package vi.talya.service;
 
+import org.springframework.stereotype.Service;
 import vi.talya.exception.NoSuchContactException;
 import vi.talya.model.Address;
 import vi.talya.model.Contact;
@@ -12,6 +13,7 @@ import java.util.Set;
 /**
  * Created by vitalii on 07.03.17.
  */
+@Service
 public interface ContactService {
 
     Contact addContact(Contact contact);

@@ -22,9 +22,9 @@ public class ContactServiceImpl implements ContactService {
     public static final Logger LOGGER = Logger.getLogger(ContactService.class);
     public static final String CONTACT_NOT_FOUN_MESSAGE = "Contact can not be found with such id: ";
 
+    @Autowired
     private ContactDAO contactDAO;
 
-    @Autowired
     public ContactServiceImpl(ContactDAO contactDAO) {
         this.contactDAO = contactDAO;
     }

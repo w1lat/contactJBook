@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+    <context:property-placeholder location="classpath:app.properties"/>
+
+    <!--<tx:annotation-driven/>-->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+    <context:annotation-config/>
+    <context:component-scan base-package="vi.talya"/>
+
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy">
+        <constructor-arg>
+            <bean class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+                <property name="driverClass" value="org.h2.Driver" />
+                <property name="url"
+                          value="jdbc:h2:mem:contactBook;DB_CLOSE_DELAY=-1;MODE=MySQL;TRACE_LEVEL_SYSTEM_OUT=2" />
+            </bean>
+        </constructor-arg>
+    </bean>
+
+     <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
+
+     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" scope="singleton">
+         <property name="packagesToScan" value="vi.talya.model" />
+         <property name="jpaVendorAdapter">
+             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+         </property>
+         <property name="dataSource" ref="dataSource"/>
+         <property name="jpaDialect" ref="jpaDialect"/>
+
+         <property name="jpaProperties">
+             <props>
+                 <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+                 <prop key="hibernate.show_sql">true</prop>
+                 <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+                 <prop key="hibernate.connection.pool_size">1</prop>
+             </props>
+         </property>
+     </bean>
+
+     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+
+     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+         <property name="entityManagerFactory" ref="entityManagerFactory"/>
+     </bean>
+
+    <bean id="org.h2.tools.Server-WebServer" class="org.h2.tools.Server"
+          factory-method="createWebServer" depends-on="dataSource"
+          init-method="start" lazy-init="false">
+        <constructor-arg value="-web,-webPort,11111" />
+    </bean>
+
+ </beans>

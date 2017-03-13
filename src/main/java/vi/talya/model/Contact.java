@@ -24,7 +24,7 @@ public class Contact extends GeneratedIdentifierEntity{
     private String phoneNumber;
     @Column(length = 25)
     private String email;
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "addres_id", referencedColumnName = "id")
     private Address address;
     @Column

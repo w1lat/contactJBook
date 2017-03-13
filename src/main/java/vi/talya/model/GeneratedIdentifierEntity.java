@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class GeneratedIdentifierEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
 
     public int getId() {
