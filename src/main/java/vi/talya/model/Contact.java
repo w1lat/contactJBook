@@ -1,5 +1,6 @@
 package vi.talya.model;
 
+import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
  */
 @Entity
 @Table(name =  "contacts")
-public class Contact extends GeneratedIdentifierEntity{
+public class Contact extends GeneratedIdentifierEntity implements Comparable{
 
     @Column(length = 20)
     private String name;
@@ -114,5 +115,10 @@ public class Contact extends GeneratedIdentifierEntity{
 
     public void setBirhtday(LocalDate birhtday) {
         this.birhtday = birhtday;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return CompareToBuilder.reflectionCompare(this, o, new String[]{"name", "address", "lastName", "contactGroup", "phoneNumber", "email", "birhtday"});
     }
 }

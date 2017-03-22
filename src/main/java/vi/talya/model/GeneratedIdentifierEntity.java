@@ -1,12 +1,14 @@
 package vi.talya.model;
 
+import org.apache.commons.lang3.builder.CompareToBuilder;
+
 import javax.persistence.*;
 
 /**
  * Created by vitalii on 07.03.17.
  */
 @MappedSuperclass
-public class GeneratedIdentifierEntity {
+public class GeneratedIdentifierEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,4 +21,5 @@ public class GeneratedIdentifierEntity {
     public void setId(int id) {
         this.id = id;
     }
+
 }

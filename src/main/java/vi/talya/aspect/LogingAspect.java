@@ -1,7 +1,9 @@
 package vi.talya.aspect;
 
+import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -13,20 +15,23 @@ import org.springframework.stereotype.Component;
 @Component
 public class LogingAspect {
 
+    private static Logger LOGGER = Logger.getLogger(LogingAspect.class);
+
     @Before("execution(* vi.talya.service.ContactService.*(..))")
     public void logBefore(JoinPoint joinPoint) {
 
-        System.out.println("******");
-        System.out.println("******");
-        System.out.println("Service " + joinPoint.getSignature().getName() + " begins");
+        LOGGER.debug("******");
+        LOGGER.debug("******");
+        LOGGER.debug("Service " + joinPoint.getSignature().getName() + " begins");
     }
 
-    @After("execution(* vi.talya.service.ContactService.*(..))")
+    @AfterReturning("execution(* vi.talya.service.ContactService.*(..))")
     public void logAfter(JoinPoint joinPoint) {
 
-        System.out.println("******");
-        System.out.println("******");
-        System.out.println("Service " + joinPoint.getSignature().getName() + " ends");
+
+        LOGGER.debug("Service " + joinPoint.getSignature().getName() + " ends");
+        LOGGER.debug("******");
+        LOGGER.debug("******");
     }
 
 }

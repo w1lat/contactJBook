@@ -1,5 +1,6 @@
 package vi.talya.model;
 
+import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -11,11 +12,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "addresses")
-public class Address extends GeneratedIdentifierEntity {
+public class Address extends GeneratedIdentifierEntity{
 
-//    @Column
-//    @OneToOne(mappedBy = "address", cascade = CascadeType.PERSIST)
-//    private Contact contact;
     @Column(length = 50)
     private String street;
     @Column(length = 10)
@@ -52,14 +50,6 @@ public class Address extends GeneratedIdentifierEntity {
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
     }
-
-//    public Contact getContact() {
-//        return contact;
-//    }
-//
-//    public void setContact(Contact contact) {
-//        this.contact = contact;
-//    }
 
     public String getStreet() {
         return street;
