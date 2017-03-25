@@ -59,13 +59,13 @@ public class HibernateContactDAOImpl implements ContactDAO {
 
     public List<Contact> findContactByName(String lastname) {
 
-        return entityManager.createQuery("SELECT c FROM Contact c WHERE c.lastname = :lastname", Contact.class)
+        return entityManager.createQuery("SELECT c FROM Contact c WHERE c.lastName = :lastname", Contact.class)
                 .setParameter("lastname", lastname).getResultList();
     }
 
     public List<Contact> getAll(int offset) {
 
         return entityManager.createQuery("SELECT c FROM Contact c", Contact.class)
-                .setFirstResult(offset).setMaxResults(50).getResultList();
+                .setFirstResult(offset * 50).setMaxResults(50).getResultList();
     }
 }

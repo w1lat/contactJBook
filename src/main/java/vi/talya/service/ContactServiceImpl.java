@@ -64,7 +64,7 @@ public class ContactServiceImpl implements ContactService {
         return foundContact;
     }
 
-    public Set<Contact> getAllContacts(int offset) {
+    public Set<Contact> getAllContacts(int offset){
         LOGGER.debug("Getting all contacts begin");
 
         Set<Contact> contacts = new HashSet<>(contactDAO.getAll(offset));

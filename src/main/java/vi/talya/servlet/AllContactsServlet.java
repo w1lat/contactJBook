@@ -33,7 +33,9 @@ public class AllContactsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Set<Contact> contacts = service.getAllContacts(0);
+        int offset = Integer.parseInt(req.getParameter("offset"));
+
+        Set<Contact> contacts = service.getAllContacts(offset);
 
         req.setAttribute("contacts", contacts);
 

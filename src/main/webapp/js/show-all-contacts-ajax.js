@@ -5,6 +5,8 @@ $(document).ready(function() {
             userName : name,
         }, function(responseText) {
             var responseText2 = responseText;
+            $('#ajaxCreateContactServletResponse').hide();
+            $('#ajaxGetAllUsersServletResponse').show();
             $('#ajaxGetAllUsersServletResponse').html(responseText2);
         });
     });

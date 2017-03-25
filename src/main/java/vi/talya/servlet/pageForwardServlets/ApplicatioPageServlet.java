@@ -15,6 +15,7 @@ public class ApplicatioPageServlet extends HttpServlet {
 
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+        getServletContext().setAttribute("offset", "0");
         req.getRequestDispatcher("WEB-INF/jsp/all-in-one.jsp").forward(req, res);
     }
 }

@@ -20,21 +20,30 @@ public class GetUserServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        applicationContext = (ApplicationContext) getServletContext().getAttribute("spring-context" );
+        applicationContext = (ApplicationContext) getServletContext().getAttribute("spring-context");
         service = applicationContext.getBean(ContactService.class);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Set<Contact> contacts = service.getAllContacts(0);
+        int offset = Integer.parseInt(getServletContext().getAttribute("offset").toString());
+
+        Set<Contact> contacts = service.getAllContacts(offset);
+
+        if(offset > 0 && contacts.size() == 0){
+            offset = 0;
+            contacts = service.getAllContacts(offset);
+        }
+
+        getServletContext().setAttribute("offset", ++offset);
         String htmlCode = new String();
         htmlCode += "<ul>";
         TreeSet<Contact> sortedSet = new TreeSet<>(contacts);
         for (Contact contact : sortedSet) {
-                 htmlCode +=
-                "<li> id:" + contact.getId() +
-                "</li> <li> name:" + contact.getName() +
-                "</li>";
+            htmlCode +=
+                    "<li> id:" + contact.getId() +
+                            "</li> <li> name:" + contact.getName() +
+                            "</li>";
         }
         htmlCode += "</ul>";
 

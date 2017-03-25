@@ -1,4 +1,3 @@
-$(document).ready(function() {
     $('#btnCreateContact').click(function(event) {
         var name = $('#userName').val();
         var lastName = $('#userLastName').val();
@@ -16,7 +15,8 @@ $(document).ready(function() {
         }, function(responseText) {
             var responseText2 = "<h2>Created contact</h2>";
             responseText2 += responseText;
+            $('#ajaxGetAllUsersServletResponse').hide();
+            $('#ajaxCreateContactServletResponse').show();
             $('#ajaxCreateContactServletResponse').html(responseText2);
         });
-    });
 });

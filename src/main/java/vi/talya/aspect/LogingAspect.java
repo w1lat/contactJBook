@@ -20,18 +20,18 @@ public class LogingAspect {
     @Before("execution(* vi.talya.service.ContactService.*(..))")
     public void logBefore(JoinPoint joinPoint) {
 
-        LOGGER.debug("******");
-        LOGGER.debug("******");
-        LOGGER.debug("Service " + joinPoint.getSignature().getName() + " begins");
+        LOGGER.info("******");
+        LOGGER.info("******");
+        LOGGER.info("Service " + joinPoint.getSignature().getName() + " begins");
     }
 
     @AfterReturning("execution(* vi.talya.service.ContactService.*(..))")
     public void logAfter(JoinPoint joinPoint) {
 
 
-        LOGGER.debug("Service " + joinPoint.getSignature().getName() + " ends");
-        LOGGER.debug("******");
-        LOGGER.debug("******");
+        LOGGER.info("Service " + joinPoint.getSignature().getName() + " ends");
+        LOGGER.info("******");
+        LOGGER.info("******");
     }
 
 }
