@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/GetUserServlet")
-public class GetUserServlet extends HttpServlet {
+@WebServlet("/GetUsersServlet")
+public class GetUsersServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private ApplicationContext applicationContext;
     private ContactService service;

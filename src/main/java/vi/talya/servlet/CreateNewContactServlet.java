@@ -58,8 +58,6 @@ public class CreateNewContactServlet extends HttpServlet {
         htmlCode += "</ul>";
 
         resp.setContentType("text/html");
-        resp.getWriter().
-
-                write(htmlCode);
+        resp.getWriter().write(htmlCode);
     }
 }

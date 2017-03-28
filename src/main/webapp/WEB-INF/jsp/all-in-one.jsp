@@ -29,14 +29,18 @@
         Email: <input type="text" id="userEmail"/>
 
         Birhtday: <input type="text" id="userBirthday"/>
+
+        Id: <input type="text" id="contactId"/>
     </div>
 
     <div id="ajaxGetAllUsersServletResponse"></div>
     <div id="ajaxCreateContactServletResponse"></div>
+    <div id="ajaxGetUserByIdResponse"></div>
 
     <script src="http://code.jquery.com/jquery-1.10.2.js"
             type="text/javascript"></script>
     <script src="js/show-all-contacts-ajax.js" type="text/javascript"></script>
     <script src="js/create-show-contact-ajax.js" type="text/javascript"></script>
+    <script src="js/show_contact_by_id.js" type="text/javascript"></script>
 </body>
 </html>

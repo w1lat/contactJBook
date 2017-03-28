@@ -2,9 +2,9 @@ package vi.talya.service;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import vi.talya.utils.customAnnotations.Profilling;
 import vi.talya.dao.ContactDAO;
 import vi.talya.exception.NoSuchContactException;
 import vi.talya.model.Contact;
@@ -17,6 +17,7 @@ import java.util.Set;
  */
 @Service(value = "contactService")
 @Transactional
+@Profilling
 public class ContactServiceImpl implements ContactService {
 
     public static final Logger LOGGER = Logger.getLogger(ContactService.class);

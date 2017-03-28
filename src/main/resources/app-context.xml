@@ -48,4 +48,6 @@
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
+    <bean class="vi.talya.utils.postProcessor.ProfilingHandlerBeanPostProcessor"/>
+
 </beans>
